@@ -57,7 +57,8 @@ x main.go
 go mod init
 git init
 git remote add origin git@github.com:myuser/myrepo.git
-git commit -am 'initial commit'
+git add -A
+git commit -m 'initial commit'
 git push -u origin master
 git tag v0.1.0
 git push --tags

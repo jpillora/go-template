@@ -2,8 +2,8 @@
 
 A short description of `myrepo`
 
-[![GoDev](https://img.shields.io/static/v1?label=godev&message=reference&color=00add8)][https://pkg.go.dev/github.com/myuser/myrepo]
-[![CI](https://github.com/myuser/myrepo/workflows/Tests/badge.svg)](https://github.com/myuser/myrepo/actions?workflow=CI)
+[![GoDev](https://img.shields.io/static/v1?label=godoc&message=reference&color=00add8)](https://pkg.go.dev/github.com/myuser/myrepo)
+[![CI](https://github.com/myuser/myrepo/workflows/CI/badge.svg)](https://github.com/myuser/myrepo/actions?workflow=CI)
 
 ### Features
 
@@ -13,21 +13,11 @@ A short description of `myrepo`
 
 ### Usage
 
-```sh
-# end-to-end demonstration
-$ cd via-a-short-snippet/
-# of shell
-$ ls .
-which/
-shows/
-example-output/
-```
-
 ```go
 package main
 
 func main() {
-	//or a small executable go program
+	//a small demo executable go program
 	println("...")
 }
 ```
@@ -35,6 +25,8 @@ func main() {
 ### Install
 
 **Binaries**
+
+<!-- NOTE: these badges only work on public repos -->
 
 [![Releases](https://img.shields.io/github/release/myuser/myrepo.svg)](https://github.com/myuser/myrepo/releases)
 [![Releases](https://img.shields.io/github/downloads/myuser/myrepo/total.svg)](https://github.com/myuser/myrepo/releases)
