@@ -4,7 +4,7 @@ jobs:
   # ================
   # TEST JOB
   #   runs on every push and PR
-  #   runs 6 times (see matrix)
+  #   runs 2x3 times (see matrix)
   # ================
   test:
     name: Test
@@ -22,14 +22,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: go build -v .
-      - name: Vet
-        run: go vet -v ./...
       - name: Test
         run: go test -v ./...
   # ================
   # RELEASE JOB
   #   runs after a success test
-  #   only runs on every push "v*" tag
+  #   only runs on push "v*" tag
   # ================
   release:
     name: Release
