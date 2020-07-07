@@ -1,6 +1,6 @@
 # go-template
 
-An automatic cross-compiling Go (golang) repository template using Github actions
+An automatic cross-compiling Go (golang) repository template using [`goreleaser`](https://github.com/goreleaser/goreleaser) and Github actions
 
 ### Features
 
@@ -24,17 +24,20 @@ An automatic cross-compiling Go (golang) repository template using Github action
 ### Quick start
 
 ```sh
-# copy the 'root' directory from this repo into the working directory
+# copy root/* into the working directory
 curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
+```
 
-# flags explained
-curl --silent --location https://github.com/jpillora/go-template/archive/master.tar.gz | tar \
-  --keep-old-files \
-  --extract \
-  --gzip \
-  --file - \
-  --verbose \
-  --strip-components 2
+```sh
+# long version
+curl --silent --location https://github.com/jpillora/go-template/archive/master.tar.gz | \
+  tar \
+    --keep-old-files \
+    --extract \
+    --gzip \
+    --file - \
+    --verbose \
+    --strip-components 2
 ```
 
 ### Demo
