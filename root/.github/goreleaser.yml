@@ -22,6 +22,8 @@ archives:
   - format: gz
     files:
       - none*
+release:
+  prerelease: auto
 changelog:
   sort: asc
   filters:
