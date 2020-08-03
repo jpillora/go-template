@@ -55,11 +55,11 @@ x .github/workflows/ci.yml
 x LICENSE
 x README.md
 x main.go
-# optionally replace "myuser" and "myrepo" in README/LICENCE
+# optionally replace "jpillora" and "myrepo" in README/LICENCE
 # and you're ready to build
 go mod init
 git init
-git remote add origin git@github.com:myuser/myrepo.git
+git remote add origin git@github.com:jpillora/myrepo.git
 git add -A
 git commit -m 'initial commit'
 git push -u origin master

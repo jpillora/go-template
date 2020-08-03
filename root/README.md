@@ -2,8 +2,8 @@
 
 A short description of `myrepo`
 
-[![GoDev](https://img.shields.io/static/v1?label=godoc&message=reference&color=00add8)](https://pkg.go.dev/github.com/myuser/myrepo)
-[![CI](https://github.com/myuser/myrepo/workflows/CI/badge.svg)](https://github.com/myuser/myrepo/actions?workflow=CI)
+[![GoDev](https://img.shields.io/static/v1?label=godoc&message=reference&color=00add8)](https://pkg.go.dev/github.com/jpillora/myrepo)
+[![CI](https://github.com/jpillora/myrepo/workflows/CI/badge.svg)](https://github.com/jpillora/myrepo/actions?workflow=CI)
 
 ### Features
 
@@ -26,15 +26,13 @@ func main() {
 
 **Binaries**
 
-<!-- NOTE: these badges only work on public repos -->
+[![Releases](https://img.shields.io/github/release/jpillora/myrepo.svg)](https://github.com/jpillora/myrepo/releases)
+[![Releases](https://img.shields.io/github/downloads/jpillora/myrepo/total.svg)](https://github.com/jpillora/myrepo/releases)
 
-[![Releases](https://img.shields.io/github/release/myuser/myrepo.svg)](https://github.com/myuser/myrepo/releases)
-[![Releases](https://img.shields.io/github/downloads/myuser/myrepo/total.svg)](https://github.com/myuser/myrepo/releases)
-
-Find [the latest pre-compiled binaries here](https://github.com/myuser/myrepo/releases/latest)
+Find [the latest pre-compiled binaries here](https://github.com/jpillora/myrepo/releases/latest)
 
 **Source**
 
 ```sh
-$ go get -v github.com/myuser/myrepo
+$ go get -v github.com/jpillora/myrepo
 ```
