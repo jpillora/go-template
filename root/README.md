@@ -11,6 +11,25 @@ A short description of `myrepo`
 * Another feature
 * And another
 
+### Install
+
+**Binaries**
+
+[![Releases](https://img.shields.io/github/release/jpillora/myrepo.svg)](https://github.com/jpillora/myrepo/releases)
+[![Releases](https://img.shields.io/github/downloads/jpillora/myrepo/total.svg)](https://github.com/jpillora/myrepo/releases)
+
+Find [the latest pre-compiled binaries here](https://github.com/jpillora/myrepo/releases/latest)  or download and install it now with:
+
+```
+$ curl https://i.jpillora.com/myrepo! | bash
+```
+
+**Source**
+
+```sh
+$ go get -v github.com/jpillora/myrepo
+```
+
 ### Usage
 
 ```go
@@ -20,19 +39,4 @@ func main() {
 	//a small demo executable go program
 	println("...")
 }
-```
-
-### Install
-
-**Binaries**
-
-[![Releases](https://img.shields.io/github/release/jpillora/myrepo.svg)](https://github.com/jpillora/myrepo/releases)
-[![Releases](https://img.shields.io/github/downloads/jpillora/myrepo/total.svg)](https://github.com/jpillora/myrepo/releases)
-
-Find [the latest pre-compiled binaries here](https://github.com/jpillora/myrepo/releases/latest)
-
-**Source**
-
-```sh
-$ go get -v github.com/jpillora/myrepo
 ```
