@@ -1,9 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	
+	"github.com/jpillora/opts"
+)
 
 var version = "0.0.0-src"
 
+type config struct {
+	Foo string
+	Bar int
+}
+
 func main() {
-	fmt.Printf("hello world, you are running version %s\n", version)
+	c := config{}
+	opts.New(&c).Version(version).Parse()
+	fmt.Printf("%v\n", c)
 }

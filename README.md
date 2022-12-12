@@ -25,12 +25,12 @@ An automatic cross-compiling Go (golang) repository template using [`goreleaser`
 
 ```sh
 # copy root/* into the working directory
-curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
+curl -sL https://github.com/jpillora/go-template/archive/jpillora.tar.gz | tar kxzvf - --strip-components 2
 ```
 
 ```sh
 # long version
-curl --silent --location https://github.com/jpillora/go-template/archive/master.tar.gz | \
+curl --silent --location https://github.com/jpillora/go-template/archive/jpillora.tar.gz | \
   tar \
     --keep-old-files \
     --extract \
@@ -47,7 +47,7 @@ curl --silent --location https://github.com/jpillora/go-template/archive/master.
 mkdir myrepo
 cd myrepo
 # copy the 'root' directory from this repo into the working directory
-curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
+curl -sL https://github.com/jpillora/go-template/archive/jpillora.tar.gz | tar kxzvf - --strip-components 2
 x .github/
 x .github/goreleaser.yml
 x .github/workflows/
@@ -62,7 +62,7 @@ git init
 git remote add origin git@github.com:jpillora/myrepo.git
 git add -A
 git commit -m 'initial commit'
-git push -u origin master
+git push -u origin main
 git tag v0.1.0
 git push --tags
 # see the repo's Actions page to watch your binaries being built...

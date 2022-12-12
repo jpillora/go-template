@@ -18,19 +18,27 @@ A short description of `myrepo`
 [![Releases](https://img.shields.io/github/release/jpillora/myrepo.svg)](https://github.com/jpillora/myrepo/releases)
 [![Releases](https://img.shields.io/github/downloads/jpillora/myrepo/total.svg)](https://github.com/jpillora/myrepo/releases)
 
-Find [the latest pre-compiled binaries here](https://github.com/jpillora/myrepo/releases/latest)  or download and install it now with:
-
-```
-$ curl https://i.jpillora.com/myrepo! | bash
-```
+Find [the latest pre-compiled binaries here](https://github.com/jpillora/myrepo/releases/latest)  or download and install it now with `curl https://i.jpillora.com/myrepo! | bash`
 
 **Source**
 
+If you have [Go installed](https://jpillora.com/dotfiles/bin/install-go), you can also install from source:
+
 ```sh
-$ go get -v github.com/jpillora/myrepo
+# install from source with
+go install github.com/jpillora/myrepo@latest
 ```
 
-### Usage
+### CLI Usage
+
+```sh
+# once installed
+myrepo --version
+1.2.3
+```
+
+
+### Programmatic Usage
 
 ```go
 package main
