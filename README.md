@@ -55,9 +55,8 @@ x .github/workflows/ci.yml
 x LICENSE
 x README.md
 x main.go
-# optionally replace "myuser" and "myrepo" in README/LICENCE
+# optionally replace "myuser" and "myrepo" in README/LICENCE/go.mod
 # and you're ready to build
-go mod init
 git init
 git remote add origin git@github.com:myuser/myrepo.git
 git add -A
