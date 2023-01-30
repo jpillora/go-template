@@ -13,7 +13,7 @@ cd demo
 export USERNAME=jpillora
 export REPO=go-template-demo
 export CONFIRM=y
-curl https://jpillora.com/go-template/use.sh | bash
+curl https://raw.githubusercontent.com/jpillora/go-template/demo/use.sh | bash
 # confirm we can build
 go build -v -o /dev/null .
 # mark as generated
