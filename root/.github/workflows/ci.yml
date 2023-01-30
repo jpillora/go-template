@@ -40,13 +40,11 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-      - name: Debug
-        run: |
-          echo GITHUB_ACTOR: ${{ github.actor }}
       - name: goreleaser
         if: success()
         uses: docker://goreleaser/goreleaser:latest
         env:
+          GITHUB_USER: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: release --config .github/goreleaser.yml

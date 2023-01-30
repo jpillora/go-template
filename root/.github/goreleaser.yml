@@ -21,7 +21,8 @@ builds:
       - '6'
       - '7'
 nfpms:
-  - formats:
+  - maintainer: "https://github.com/{{ .Env.GITHUB_USER }}"
+    formats:
       - deb
       - rpm
       - apk
