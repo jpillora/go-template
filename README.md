@@ -2,6 +2,8 @@
 
 An automatic cross-compiling Go (golang) repository template using [`goreleaser`](https://github.com/goreleaser/goreleaser) and Github actions
 
+If you follow the **Quick start** guide, you'll end up with a repository like https://github.com/jpillora/go-template-demo, with binaries found under "Releases", and Docker images found under "Packages".
+
 ### Features
 
 * Simple
