@@ -11,8 +11,9 @@ jobs:
     name: Test
     strategy:
       matrix:
-        go-version: ['1.18', '1.19']
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        # optionally test/build multiple versions of Go across multiple platforms
+        go-version: ['1.19'] # '1.16', '1.17', '1.18,
+        platform: [ubuntu-latest] # , macos-latest, windows-latest
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout

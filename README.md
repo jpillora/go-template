@@ -73,18 +73,14 @@ git push --tags
 
 ### Customise
 
-* If you're only building a command-line tool, you will likely not need a build matrix
+* If you're building a Go package to be imported by other Go programs, you will likely want a build matrix
 
   ```yml
-  # delete
+  # update this section
   strategy:
-  matrix:
-    go-version: ['1.18', '1.19']
-    platform: [ubuntu-latest, macos-latest, windows-latest]
-  # update
-  runs-on: 'ubuntu-latest'
-  # and update
-  go-version: '1.19'
+    matrix:
+      go-version: ['1.18', '1.19']
+      platform: [ubuntu-latest, macos-latest, windows-latest]
   ```
 
 * If you don't need Docker images, you can delete the Docker release job
