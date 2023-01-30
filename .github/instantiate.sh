@@ -20,8 +20,8 @@ rm -rfv ./*
 echo "should have wiped:"
 ls -lah
 
-# replace with template
-cp -r $GITHUB_WORKSPACE/template/root/. .
+# test template "Quick start"
+curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
 echo "should be template root:"
 ls -lah
 
