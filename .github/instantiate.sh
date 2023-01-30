@@ -4,6 +4,10 @@ echo "$SSH_KEY" >/tmp/private.key
 chmod 600 /tmp/private.key
 # instantiate this template with demo repo "go-template-demo"
 set -xeuf -o pipefail
+
+# show workspace
+cd $GITHUB_WORKSPACE
+tree
 # install dependencies
 cd /tmp
 curl -s 'https://i.jpillora.com/BurntSushi/ripgrep!?as=rg' | bash
@@ -12,12 +16,14 @@ curl -s 'https://i.jpillora.com/BurntSushi/ripgrep!?as=rg' | bash
 # $GITHUB_WORKSPACE/template is the template repo
 # $GITHUB_WORKSPACE/demo is the demo repo
 
+mv $GITHUB_WORKSPACE/demo/.git /tmp/.git
+rm -rf $GITHUB_WORKSPACE/demo
+mkdir $GITHUB_WORKSPACE/demo
+mv /tmp/.git $GITHUB_WORKSPACE/demo/.git
+
 cd $GITHUB_WORKSPACE/demo
 echo "should be demo dir: $(pwd)"
-
-# wipe everything
-rm -rfv ./*
-echo "should have wiped:"
+echo "should be just git:"
 ls -lah
 
 # test template "Quick start"
