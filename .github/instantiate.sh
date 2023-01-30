@@ -18,12 +18,14 @@ rm -rf $GITHUB_WORKSPACE/demo/*
 # replace with template
 cp -r $GITHUB_WORKSPACE/template/root/. $GITHUB_WORKSPACE/demo
 cd $GITHUB_WORKSPACE/demo
-pwd
+
+echo "should be demo dir: $(pwd)"
+echo "and files should be template root:"
 ls -lah
 
 # swap placeholders
-rg --passthru 'myuser' -r 'jpillora' .
-rg --passthru 'myrepo' -r 'go-template-demo' .
+rg 'myuser' --files-with-matches | xargs sed -i '' 's/myuser/jpillora/g'
+rg 'myrepo' --files-with-matches | xargs sed -i '' 's/myrepo/go-template-demo/g'
 
 # confirm we can build
 go mod init github.com/jpillora/go-template-demo
@@ -32,9 +34,12 @@ go build -v -o /dev/null .
 
 # mark as generated
 echo "generated this repo at: $(date)" >generated.txt
+
+# commit
 git config user.name go-template
 git config user.email jpillora@users.noreply.github.com
 git add .
 git commit -m "automated test from jpillora/go-template"
+
 # push
 git -c core.sshCommand="ssh -i /tmp/private.key" push
