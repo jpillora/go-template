@@ -8,18 +8,8 @@ jobs:
     name: Demo
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Template
+      - name: Setup Git
         uses: actions/checkout@v3
-        with:
-          repository: jpillora/go-template
-          path: template
-          fetch-depth: 0
-      - name: Checkout Demo
-        uses: actions/checkout@v3
-        with:
-          repository: jpillora/go-template-demo
-          ssh-key: ${{ secrets.SSH_KEY }}
-          path: demo
       - name: Set up Go
         uses: actions/setup-go@v3
         with:

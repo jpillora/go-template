@@ -4,24 +4,14 @@ echo "$SSH_KEY" >/tmp/private.key
 chmod 600 /tmp/private.key
 # instantiate this template with demo repo "go-template-demo"
 set -xeuf -o pipefail
-
-# show workspace
-cd $GITHUB_WORKSPACE
-tree
 # install dependencies
-cd /tmp
 curl -s 'https://i.jpillora.com/BurntSushi/ripgrep!?as=rg' | bash
 
-# $GITHUB_WORKSPACE is GHA root
-# $GITHUB_WORKSPACE/template is the template repo
-# $GITHUB_WORKSPACE/demo is the demo repo
-
-mv $GITHUB_WORKSPACE/demo/.git /tmp/.git
-rm -rf $GITHUB_WORKSPACE/demo
-mkdir $GITHUB_WORKSPACE/demo
-mv /tmp/.git $GITHUB_WORKSPACE/demo/.git
-
-cd $GITHUB_WORKSPACE/demo
+# clone demo
+git -c core.sshCommand="ssh -i /tmp/private.key" clone git@github.com:jpillora/go-template-demo.git demofull
+mkdir demo
+mv demofull/.git demo/.git
+cd demo
 echo "should be demo dir: $(pwd)"
 echo "should be just git:"
 ls -lah
@@ -32,8 +22,8 @@ echo "should be template root:"
 ls -lah
 
 # swap placeholders
-rg 'myuser' --files-with-matches | xargs sed -i '' 's/myuser/jpillora/g'
-rg 'myrepo' --files-with-matches | xargs sed -i '' 's/myrepo/go-template-demo/g'
+rg 'myuser' --files-with-matches . | xargs sed -i 's/myuser/jpillora/g'
+rg 'myrepo' --files-with-matches . | xargs sed -i 's/myrepo/go-template-demo/g'
 
 # confirm we can build
 go mod init github.com/jpillora/go-template-demo
