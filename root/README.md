@@ -13,16 +13,19 @@ A short description of `myrepo`
 
 ### Usage
 
+How to use this Go package:
+
 ```go
 package main
 
 func main() {
-	//a small demo executable go program
-	println("...")
+	println("hello world")
 }
 ```
 
 ### Install
+
+How to install this Go command-line tool:
 
 **Binaries**
 
@@ -36,5 +39,13 @@ Download [the latest pre-compiled binaries here](https://github.com/myuser/myrep
 **Source**
 
 ```sh
-$ go get -v github.com/myuser/myrepo
+$ go install github.com/myuser/myrepo@latest
 ```
+
+### Another section
+
+Another section of awesome documentation
+
+### LICENSE
+
+See [LICENSE](./LICENSE)
