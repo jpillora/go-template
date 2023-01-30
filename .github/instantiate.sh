@@ -28,6 +28,7 @@ rg 'myrepo' --files-with-matches . | xargs sed -i 's/myrepo/go-template-demo/g'
 # confirm we can build
 go mod init github.com/jpillora/go-template-demo
 go mod tidy
+echo "" >go.sum
 go build -v -o /dev/null .
 
 # mark as generated

@@ -31,7 +31,7 @@ func main() {
 [![Releases](https://img.shields.io/github/release/myuser/myrepo.svg)](https://github.com/myuser/myrepo/releases)
 [![Releases](https://img.shields.io/github/downloads/myuser/myrepo/total.svg)](https://github.com/myuser/myrepo/releases)
 
-Find [the latest pre-compiled binaries here](https://github.com/myuser/myrepo/releases/latest)
+Download [the latest pre-compiled binaries here](https://github.com/myuser/myrepo/releases/latest) or install it now with `curl https://i.jpillora.com/myuser/myrepo! | bash`
 
 **Source**
 
