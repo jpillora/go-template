@@ -31,45 +31,20 @@ If you follow the **Quick start** guide, you'll end up with a repository like ht
 
 ### Quick start
 
-```sh
-# copy root/* into the working directory
-curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
-```
+The quickest way to use this template is to run `curl https://jpillora.com/go-template/use.sh | bash` and follow the prompts. Once run, a templated set of files will be copied into your current working directory.
 
-```sh
-# long version
-curl --silent --location https://github.com/jpillora/go-template/archive/master.tar.gz | \
-  tar \
-    --keep-old-files \
-    --extract \
-    --gzip \
-    --file - \
-    --verbose \
-    --strip-components 2
-```
+If you don't want to use this script, you can copy `root/` and manually replace `myuser`/`myrepo` across the files.
 
-### Demo
+Once copied, you have to commit these files into a Github repository to trigger Github Actions
+
+### Example
 
 ```sh
 # create your new repository
 mkdir myrepo
 cd myrepo
-# copy the 'root' directory from this repo into the working directory
-curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
-x .github/
-x .github/goreleaser.yml
-x .github/workflows/
-x .github/workflows/ci.yml
-x LICENSE
-x README.md
-x main.go
-# optionally find/replace "myuser" and "myrepo" in README/LICENCE/go.mod
-# with YOUR USER and YOUR REPO
-for f in go.mod README.md LICENSE; do
-  sed -i 's/myuser/YOURUSER/g' $f
-  sed -i 's/myrepo/YOURREPO/g' $f
-done
-# and you're ready to build
+curl https://jpillora.com/go-template/use.sh | bash
+# push to github
 git init
 git remote add origin git@github.com:YOURUSER/YOURREPO.git
 git add -A

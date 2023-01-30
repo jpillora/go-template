@@ -10,12 +10,10 @@ mkdir demo
 mv demofull/.git demo/.git
 cd demo
 # test template "Quick start" (from demo branch)
-curl -sL https://github.com/jpillora/go-template/archive/demo.tar.gz | tar kxzvf - --strip-components 2
-# swap placeholders in 3 files: go.mod, README.md, LICENSE
-for f in go.mod README.md LICENSE; do
-  sed -i 's/myuser/jpillora/g' $f
-  sed -i 's/myrepo/go-template-demo/g' $f
-done
+export USERNAME=jpillora
+export REPO=go-template-demo
+export CONFIRM=y
+curl https://jpillora.com/go-template/use.sh | bash
 # confirm we can build
 go build -v -o /dev/null .
 # mark as generated
