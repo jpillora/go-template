@@ -21,15 +21,13 @@ cd $GITHUB_WORKSPACE/demo
 pwd
 ls -lah
 
-/usr/local/bin/rg --help
-/usr/local/bin/rg myuser .
-/usr/local/bin/rg myrepo .
-
 # swap placeholders
-# sed -i "s/GO_TEMPLATE_DEMO/$REPO_NAME/g" README.md
+rg --passthru 'myuser' -r 'jpillora' .
+rg --passthru 'myrepo' -r 'go-template-demo' .
 
 # confirm we can build
 go mod init github.com/jpillora/go-template-demo
+go mod tidy
 go build -v -o /dev/null .
 
 # mark as generated
@@ -37,6 +35,6 @@ echo "generated this repo at: $(date)" >generated.txt
 git config user.name go-template
 git config user.email jpillora@users.noreply.github.com
 git add .
-git commit -m "updated"
+git commit -m "automated test from jpillora/go-template"
 # push
 git -c core.sshCommand="ssh -i /tmp/private.key" push
