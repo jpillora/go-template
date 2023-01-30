@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+    branches:
+      - ci
+jobs:
+  demo:
+    name: Demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Template
+        uses: actions/checkout@v3
+        with:
+          path: template
+          fetch-depth: 0
+      - name: Checkout Demo
+        uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ secrets.SSH_KEY }}
+          path: demo
+      - name: Update Demo
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        working-directory: demo
+        run: |
+          echo "ls in $PWD"
+          ls -lah
+          echo "$SSH_KEY" > /tmp/private.key
+          chmd 600 /tmp/private.key
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git -c core.sshCommand="ssh -i /tmp/private.key" push
