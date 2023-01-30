@@ -28,7 +28,6 @@ rg 'myrepo' --files-with-matches . | xargs sed -i 's/myrepo/go-template-demo/g'
 # confirm we can build
 go mod init github.com/jpillora/go-template-demo
 go mod tidy
-echo "" >go.sum
 go build -v -o /dev/null .
 
 # mark as generated
@@ -39,6 +38,7 @@ git config user.name go-template
 git config user.email jpillora@users.noreply.github.com
 git add -A
 git commit -m "automated test from jpillora/go-template"
-
+git tag "v1.0.$BUILD_NUM"
 # push
 git -c core.sshCommand="ssh -i /tmp/private.key" push
+git -c core.sshCommand="ssh -i /tmp/private.key" push --tags

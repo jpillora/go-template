@@ -17,4 +17,5 @@ jobs:
       - name: Instantiate Demo
         run: ./.github/instantiate.sh
         env:
+          BUILD_NUM: ${{github.run_number}}
           SSH_KEY: ${{ secrets.SSH_KEY }}

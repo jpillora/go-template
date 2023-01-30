@@ -25,7 +25,6 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
           check-latest: true
-          cache: true
       - name: Build
         run: go build -v -o /dev/null .
       - name: Test
