@@ -3,7 +3,7 @@
 echo "$SSH_KEY" >/tmp/private.key
 chmod 600 /tmp/private.key
 # instantiate this template with demo repo "go-template-demo"
-set -euf -o pipefail
+set -xeuf -o pipefail
 # install dependencies
 cd /tmp
 curl 'https://i.jpillora.com/BurntSushi/ripgrep!?as=rg' | bash
