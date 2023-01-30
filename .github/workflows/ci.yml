@@ -21,6 +21,6 @@ jobs:
           ssh-key: ${{ secrets.SSH_KEY }}
           path: demo
       - name: Instantiate Demo
-        run: ./instantiate.sh
+        run: ./template/.github/instantiate.sh
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
