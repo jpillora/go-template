@@ -32,10 +32,10 @@ go build -v -o /dev/null .
 echo "generated this repo at: $(date)" >generated.txt
 
 # commit
-git config user.name go-template
+git config user.name "Jaime Pillora"
 git config user.email jpillora@users.noreply.github.com
 git add -A
-git commit -m "automated test from jpillora/go-template"
+git commit -m "automated test from jpillora/go-template (build #$BUILD_NUM)"
 git tag "v1.0.$BUILD_NUM"
 # push
 git -c core.sshCommand="ssh -i /tmp/private.key" push
