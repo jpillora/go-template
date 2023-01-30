@@ -17,7 +17,7 @@ echo "should be just git:"
 ls -lah
 
 # test template "Quick start"
-curl -sL https://github.com/jpillora/go-template/archive/master.tar.gz | tar kxzvf - --strip-components 2
+curl -sL https://github.com/jpillora/go-template/archive/ci.tar.gz | tar kxzvf - --strip-components 2
 echo "should be template root:"
 ls -lah
 
