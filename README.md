@@ -15,6 +15,9 @@ An automatic cross-compiling Go (golang) repository template using [`goreleaser`
     * Assumes `./main.go` (configured in `.github/goreleaser.yml`)
     * Only executed on a tag push
     * `main.go` `version` will be replaced with the tagged version
+  * Cross compile and release Docker images for all major platforms
+    * Performed by buildx
+    * Simple Dockerfile `FROM scratch`
 * Default README
   * Badges for Go doc, CI status, release downloads
 * Default LICENSE
@@ -68,7 +71,32 @@ git push --tags
 # see the repo's Releases page to find your compiled binaries
 ```
 
-### Customising
+### Customise
+
+* If you're only building a command-line tool, you will likely not need a build matrix
+
+  ```yml
+  # delete
+  strategy:
+  matrix:
+    go-version: ['1.18', '1.19']
+    platform: [ubuntu-latest, macos-latest, windows-latest]
+  # update
+  runs-on: 'ubuntu-latest'
+  # and update
+  go-version: '1.19'
+  ```
+
+* If you don't need Docker images, you can delete the Docker release job
+
+  ```yml
+  # delete
+  release_docker:
+    name: Release Docker Images
+    ...
+  ```
+
+### Create own template
 
 * Fork repository and customise
 * Add a shell alias to `curl | tar` your custom fork
