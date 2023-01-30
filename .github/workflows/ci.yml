@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches:
+      - demo
+jobs:
+  demo:
+    name: Demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Git
+        uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+      - name: Instantiate Demo
+        run: ./.github/instantiate.sh
+        env:
+          BUILD_NUM: ${{github.run_number}}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
