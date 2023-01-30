@@ -6,21 +6,23 @@ chmod 600 /tmp/private.key
 set -xeuf -o pipefail
 # install dependencies
 cd /tmp
-curl 'https://i.jpillora.com/BurntSushi/ripgrep!?as=rg' | bash
+curl -s 'https://i.jpillora.com/BurntSushi/ripgrep!?as=rg' | bash
 
 # $GITHUB_WORKSPACE is GHA root
 # $GITHUB_WORKSPACE/template is the template repo
 # $GITHUB_WORKSPACE/demo is the demo repo
-cd $GITHUB_WORKSPACE
-pwd
+
+cd $GITHUB_WORKSPACE/demo
+echo "should be demo dir: $(pwd)"
+
 # wipe everything
 rm -rf $GITHUB_WORKSPACE/demo/*
+echo "should have wiped:"
+ls -lah
+
 # replace with template
 cp -r $GITHUB_WORKSPACE/template/root/. $GITHUB_WORKSPACE/demo
-cd $GITHUB_WORKSPACE/demo
-
-echo "should be demo dir: $(pwd)"
-echo "and files should be template root:"
+echo "should be template root:"
 ls -lah
 
 # swap placeholders
