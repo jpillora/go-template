@@ -36,7 +36,7 @@ echo "generated this repo at: $(date)" >generated.txt
 # commit
 git config user.name go-template
 git config user.email jpillora@users.noreply.github.com
-git add .
+git add -A
 git commit -m "automated test from jpillora/go-template"
 
 # push
