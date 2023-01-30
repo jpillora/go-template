@@ -16,12 +16,12 @@ cd $GITHUB_WORKSPACE/demo
 echo "should be demo dir: $(pwd)"
 
 # wipe everything
-rm -rf $GITHUB_WORKSPACE/demo/*
+rm -rfv ./*
 echo "should have wiped:"
 ls -lah
 
 # replace with template
-cp -r $GITHUB_WORKSPACE/template/root/. $GITHUB_WORKSPACE/demo
+cp -r $GITHUB_WORKSPACE/template/root/. .
 echo "should be template root:"
 ls -lah
 
