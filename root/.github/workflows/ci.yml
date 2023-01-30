@@ -2,8 +2,6 @@ name: CI
 on:
   pull_request: {}
   push: {}
-  workflow_dispatch:
-    inputs: {}
 jobs:
   # ================
   # TEST JOB
@@ -39,6 +37,8 @@ jobs:
     needs: test
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -54,6 +54,8 @@ jobs:
     needs: test
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -72,7 +74,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/${{ github.github.repository }}
+          images: ghcr.io/${{ github.repository }}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
