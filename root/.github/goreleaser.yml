@@ -30,6 +30,7 @@ archives:
   - format: gz
     files:
       - none*
+    rlcp: true
 changelog:
   sort: asc
   filters:
