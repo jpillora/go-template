@@ -22,8 +22,8 @@ pwd
 ls -lah
 
 /usr/local/bin/rg --help
-/usr/local/bin/rg myuser
-/usr/local/bin/rg myrepo
+/usr/local/bin/rg myuser .
+/usr/local/bin/rg myrepo .
 
 # swap placeholders
 # sed -i "s/GO_TEMPLATE_DEMO/$REPO_NAME/g" README.md
