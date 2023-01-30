@@ -2,7 +2,7 @@ name: CI
 on:
   pull_request: {}
   push: {}
-permissions: write
+permissions: write-all
 jobs:
   # ================
   # TEST JOB
@@ -41,6 +41,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+      - name: Debug
+         run: |
+          echo GITHUB_ACTOR: ${{ github.actor }}
       - name: goreleaser
         if: success()
         uses: docker://goreleaser/goreleaser:latest
