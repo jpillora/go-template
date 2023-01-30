@@ -23,8 +23,10 @@ cd $GITHUB_WORKSPACE/demo
 pwd
 ls -lah
 
-rg myuser
-rg myrepo
+/usr/local/bin/rg myuser
+/usr/local/bin/rg myrepo
+
+go mod init
 
 echo "generated this repo at: $(date)" >generated.txt
 git config user.name go-template
