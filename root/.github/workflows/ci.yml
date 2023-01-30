@@ -5,13 +5,13 @@ on:
 permissions: write-all
 jobs:
   # ================
-  # TEST JOB
+  # BUILD AND TEST JOB
   # ================
   test:
-    name: Test
+    name: Build & Test
     strategy:
       matrix:
-        # optionally test/build multiple versions of Go across multiple platforms
+        # optionally test/build across multiple platforms/Go-versions
         go-version: ['1.19'] # '1.16', '1.17', '1.18,
         platform: [ubuntu-latest] # , macos-latest, windows-latest
     runs-on: ${{ matrix.platform }}
@@ -30,9 +30,7 @@ jobs:
       - name: Test
         run: go test -v ./...
   # ================
-  # RELEASE JOB
-  #   runs after a success test
-  #   only runs on push "v*" tag
+  # RELEASE BINARIES (on push "v*" tag)
   # ================
   release_binaries:
     name: Release Binaries
@@ -52,6 +50,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: release --config .github/goreleaser.yml
+  # ================
+  # RELEASE DOCKER IMAGES (on push "v*" tag)
+  # ================
   release_docker:
     name: Release Docker Images
     needs: test
@@ -88,4 +89,6 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
