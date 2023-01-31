@@ -14,8 +14,8 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.19'
-      - name: Instantiate Demo
-        run: ./.github/instantiate.sh
+      - name: Trigger Demo
+        run: ./.github/demo.sh
         env:
           BUILD_NUM: ${{github.run_number}}
           SSH_KEY: ${{ secrets.SSH_KEY }}

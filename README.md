@@ -31,36 +31,40 @@ If you follow the **Quick start** guide, you'll end up with a repository like ht
 
 ### Quick start
 
-The quickest way to use this template is to run `curl https://jpillora.com/go-template/use.sh | bash` and follow the prompts. Once run, a templated set of files will be copied into your current working directory.
-
-If you don't want to use this script, you can copy `root/` and manually replace `myuser`/`myrepo` across the files.
-
-Once copied, you have to commit these files into a Github repository to trigger Github Actions
-
-### Example
+The quickest way to use this template is to run:
 
 ```sh
 # create your new repository
-mkdir myrepo
-cd myrepo
+mkdir myapp
+cd myapp
 curl https://jpillora.com/go-template/use.sh | bash
+# follow the prompts...
+# confirm you can 'go build'
+go build -v -o /dev/null .
+```
+
+Alternatively, if you don't want to [use the script](use.sh), you can copy `root/` and manually replace `myuser`/`myrepo` across the files.
+
+### Trigger release
+
+Once copied, you have to commit these files into a Github repository to trigger Github Actions
+
+```sh
 # push to github
 git init
 git remote add origin git@github.com:YOURUSER/YOURREPO.git
 git add -A
 git commit -m 'initial commit'
 git push -u origin master
-git tag v0.1.0
+git tag v1.0.0
 git push --tags
-# see the repo's Actions page to watch your binaries being built...
-# see the repo's Releases page to find your compiled binaries
 ```
 
 Your [binaries should look like this](https://github.com/jpillora/go-template-demo/releases/latest), and your [docker images should look like this](https://github.com/users/jpillora/packages?repo_name=go-template-demo)
 
-### Customise
+### Customisations
 
-* If you're building a Go package to be imported by other Go programs, you will likely want a build matrix
+* If you're building a Go package to be imported by other Go programs, you will likely want to expand the build matrix:
 
   ```yml
   # update this section
@@ -70,7 +74,7 @@ Your [binaries should look like this](https://github.com/jpillora/go-template-de
       platform: [ubuntu-latest, macos-latest, windows-latest]
   ```
 
-* If you don't need Docker images, you can delete the Docker release job
+* If you don't need Docker images, you can delete the Docker release job:
 
   ```yml
   # delete
@@ -78,6 +82,8 @@ Your [binaries should look like this](https://github.com/jpillora/go-template-de
     name: Release Docker Images
     ...
   ```
+
+* By default, `CGO_ENABLED=0` is set. If you want to enable CGO, update `.github/{Dockerfile,goreleaser.yml}`.
 
 ### Create own template
 
