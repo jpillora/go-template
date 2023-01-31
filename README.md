@@ -60,7 +60,7 @@ git tag v1.0.0
 git push --tags
 ```
 
-Your [binaries should look like this](https://github.com/jpillora/go-template-demo/releases/latest), and your [docker images should look like this](https://github.com/users/jpillora/packages?repo_name=go-template-demo)
+Your [binaries should look like this](https://github.com/jpillora/go-template-demo/releases/latest), and your [docker images should look like this](https://github.com/jpillora/go-template-demo/pkgs/container/go-template-demo)
 
 ### Customisations
 

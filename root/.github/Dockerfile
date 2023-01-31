@@ -5,7 +5,8 @@ ADD . /src
 WORKDIR /src
 ENV CGO_ENABLED 0
 RUN go build \
-  -ldflags "-X main.version=$(git describe --abbrev=0 --tags)" \
+  -trimpath \
+  -ldflags "-s -w -X main.version=$(git describe --abbrev=0 --tags)" \
   -o /tmp/bin
 # run stage
 FROM scratch
