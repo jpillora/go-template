@@ -1,33 +1,33 @@
 # go-template
 
-An automatic cross-compiling Go (golang) repository template using [`goreleaser`](https://github.com/goreleaser/goreleaser) and Github actions
+A Go (golang) repository template which uses Github actions to automatically release cross-compiled binaries and Docker images
 
 If you follow the **Quick start** guide, you'll end up with a repository like https://github.com/jpillora/go-template-demo, with binaries found under "Releases", and Docker images found under "Packages".
 
 ### Features
 
 * Simple
-  * No special tools, just `curl` and `tar`
+  * No special tools, just copies `root/`
   * Won't replace existing files
+  * Release on push tag in the form `v*`
   * Repo git tag compiled into `main.version`
+  * Idempotent; existing files won't be overwritten
 * Github actions which will
   * Go build and test on all major platforms
-  * Cross compile and release binaries for all major platforms
-    * Performed by the awesome [`goreleaser`](https://github.com/goreleaser/goreleaser)
-    * Assets are single gzip files (no archives)
-    * Assumes `./main.go` (configured in `.github/goreleaser.yml`)
-    * Only executed on a tag push
-    * `main.go` `version` will be replaced with the tagged version
-    * Packaged into `gz`, `apk`, `rpm`, and `deb`
-  * Cross compile and release Docker images for all major platforms
-    * Performed by buildx
-    * Simple Dockerfile `FROM scratch`
-    * Includes Alpine root CA bundle
+  * Release cross compiled release binaries and Docker images for all major platforms
+    * Binaries:
+      * Performed by the awesome [`goreleaser`](https://github.com/goreleaser/goreleaser)
+      * Assets are single gzip files (no archives)
+      * Assumes `./main.go` (configured in `.github/goreleaser.yml`)
+      * `main.go` `version` will be replaced with the tagged version
+      * Packaged into `gz`, `apk`, `rpm`, and `deb`
+    * Docker images:
+      * Performed by buildx
+      * Simple Dockerfile `FROM scratch`
+      * Includes Alpine Root CA bundle
 * Default README
   * Badges for Go doc, CI status, release downloads
 * Default LICENSE
-* Easily forkable
-  * Replace template strings once and then `curl | tar` your fork
 
 ### Quick start
 
@@ -84,6 +84,8 @@ Your [binaries should look like this](https://github.com/jpillora/go-template-de
   ```
 
 * By default, `CGO_ENABLED=0` is set. If you want to enable CGO, update `.github/{Dockerfile,goreleaser.yml}`.
+
+* By default, it uses your repositories inbuild Docker registry, however you can switch it to use Docker hub by updating the `docker/login` step, and the `image:` defintion
 
 ### Create own template
 
