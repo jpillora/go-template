@@ -10,8 +10,7 @@ If you follow the **Quick start** guide, you'll end up with a repository like ht
   * No special tools, just copies `root/`
   * Won't replace existing files
   * Release on push tag in the form `v*`
-  * Repo git tag compiled into `main.version`
-  * Idempotent; existing files won't be overwritten
+  * Repo git tag (`vX.Y.Z`) compiled into `main.version`
 * Github actions which will
   * Go build and test on all major platforms
   * Release cross compiled release binaries and Docker images for all major platforms
@@ -90,7 +89,7 @@ Your [binaries should look like this](https://github.com/jpillora/go-template-de
 ### Create own template
 
 * Fork repository and customise
-* Add a shell alias to `curl | tar` your custom fork
+* Update `use.sh` to point back to your repo `curl -sL https://github.com/<user>/go-template/archive/<branch>.tar.gz | tar ...`
 
 ### Contributing
 
