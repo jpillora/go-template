@@ -2,7 +2,7 @@
 
 A Go (golang) repository template which uses Github actions to automatically release cross-compiled binaries and Docker images
 
-If you follow the **Quick start** guide, you'll end up with a repository like https://github.com/jpillora/go-template-demo, with binaries found under "Releases", and Docker images found under "Packages".
+If you follow the **Quick start** guide, you'll end up with a repository like [go-template-demo](https://github.com/jpillora/go-template-demo), with binaries found under "Releases", and Docker images found under "Packages".
 
 ### Features
 
@@ -36,7 +36,7 @@ The quickest way to use this template is to run:
 # create your new repository
 mkdir myapp
 cd myapp
-curl https://jpillora.com/go-template/use.sh | bash
+curl https://jpillora.com/go-template/use.sh | USER=myuser REPO=myrepo bash
 # follow the prompts...
 # confirm you can 'go build'
 go build -v -o /dev/null .

@@ -10,10 +10,7 @@ mkdir demo
 mv demofull/.git demo/.git
 cd demo
 # test template "Quick start" (from demo branch)
-export USERNAME=jpillora
-export REPO=go-template-demo
-export CONFIRM=y
-curl https://raw.githubusercontent.com/jpillora/go-template/demo/use.sh | bash
+curl https://raw.githubusercontent.com/jpillora/go-template/demo/use.sh | USER=jpillora REPO=go-template-demo bash
 # confirm we can build
 go build -v -o /dev/null .
 # mark as generated
