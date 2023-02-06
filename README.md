@@ -84,7 +84,7 @@ Your [binaries should look like this](https://github.com/jpillora/go-template-de
 
 * By default, `CGO_ENABLED=0` is set. If you want to enable CGO, update `.github/{Dockerfile,goreleaser.yml}`.
 
-* By default, it uses your repositories inbuild Docker registry, however you can switch it to use Docker hub by updating the `docker/login` step, and the `image:` defintion
+* By default, it uses your repositories inbuilt Docker registry, however you can switch it to use Docker hub by updating the `docker/login` step, and the `image:` defintion
 
 ### Create own template
 
