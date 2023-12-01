@@ -14,10 +14,14 @@ function fail {
   exit 1
 }
 function template {
+  which curl >/dev/null || fail "curl not installed"
+  which tar >/dev/null || fail "tar not installed"
+  which sed >/dev/null || fail "sed not installed"
   local USER="${USER:-}"
   local REPO="${REPO:-}"
   # extract user/repo from git remote
   if [ -z "${USER:-}" ] || [ -z "${REPO:-}" ]; then
+    which awk >/dev/null || fail "awk not installed"
     # get remote url and extract user/repo from url
     local URL=$(git config --get remote.origin.url || true)
     USER=$(echo $URL | awk -F'[:/]' '{print $2}' || true)
@@ -25,9 +29,6 @@ function template {
   fi
   [ -n "${USER:-}" ] || fail "USER environment variables must be set"
   [ -n "${REPO:-}" ] || fail "REPO environment variables must be set"
-  which curl >/dev/null || fail "curl not installed"
-  which tar >/dev/null || fail "tar not installed"
-  which sed >/dev/null || fail "sed not installed"
   #TODO echo "initialise template into this directory? [y/n]"
   TARGET=$(pwd)
   # download into temp dir
