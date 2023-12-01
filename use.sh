@@ -14,8 +14,17 @@ function fail {
   exit 1
 }
 function template {
-  [ -n "${USER:-}" ] || fail "USER/REPO environment variables must be set"
-  [ -n "${REPO:-}" ] || fail "USER/REPO environment variables must be set"
+  local USER="${USER:-}"
+  local REPO="${REPO:-}"
+  # extract user/repo from git remote
+  if [ -z "${USER:-}" ] || [ -z "${REPO:-}" ]; then
+    # get remote url and extract user/repo from url
+    local URL=$(git config --get remote.origin.url || true)
+    USER=$(echo $URL | awk -F'[:/]' '{print $2}' || true)
+    REPO=$(echo $URL | awk -F'[:/]' '{print $3}' | sed 's/\.git$//' || true)
+  fi
+  [ -n "${USER:-}" ] || fail "USER environment variables must be set"
+  [ -n "${REPO:-}" ] || fail "REPO environment variables must be set"
   which curl >/dev/null || fail "curl not installed"
   which tar >/dev/null || fail "tar not installed"
   which sed >/dev/null || fail "sed not installed"

@@ -34,15 +34,16 @@ The quickest way to use this template is to run:
 
 ```sh
 # create your new repository
-mkdir myapp
-cd myapp
-curl https://jpillora.com/go-template/use.sh | USER=myuser REPO=myrepo bash
+git clone my-repo-git-url
+cd my-repo
+# use this template
+curl https://jpillora.com/go-template/use.sh | bash
 # follow the prompts...
 # confirm you can 'go build'
 go build -v -o /dev/null .
 ```
 
-Alternatively, if you don't want to [use the script](use.sh), you can copy `root/` and manually replace `myuser`/`myrepo` across the files.
+If your directory is not a git repo, you'll need to pipe to `| USER=myuser REPO=myrepo bash` instead. Alternatively, if you don't want to [use the script](use.sh), you can copy `root/` and manually replace `myuser`/`myrepo` across the files.
 
 ### Trigger release
 
