@@ -23,9 +23,9 @@ function template {
   if [ -z "${USER:-}" ] || [ -z "${REPO:-}" ]; then
     which awk >/dev/null || fail "awk not installed"
     # get remote url and extract user/repo from url
-    local URL=$(git config --get remote.origin.url || true)
-    USER=$(echo $URL | awk -F'[:/]' '{print $2}' || true)
-    REPO=$(echo $URL | awk -F'[:/]' '{print $3}' | sed 's/\.git$//' || true)
+    local URL=$(git config --get remote.origin.url | sed 's/\.git$//' || true)
+    USER=$(echo $URL | awk -F'/' '{print $(NF-1)}' || true)
+    REPO=$(echo $URL | awk -F'/' '{print $NF}' || true)
   fi
   [ -n "${USER:-}" ] || fail "USER environment variables must be set"
   [ -n "${REPO:-}" ] || fail "REPO environment variables must be set"
